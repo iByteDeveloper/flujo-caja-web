@@ -1,0 +1,455 @@
+:root {
+    /* --theme-color-primary: #287bff;
+    --theme-color-secondary: #F2C94C;
+    --theme-color-gray6: #333333;
+    --theme-color-gray5: #4F4F4F;
+    --theme-color-gray4: #828282;
+    --theme-color-gray3: #BDBDBD;
+    --theme-color-gray2: #E0E0E0;
+    --theme-color-gray1: #F2F2F2;
+    --theme-color-gray0: #FFFFFF; */
+    --blue: #287bff;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}
+
+html {
+    font-size: 16px;
+    font-family: Roboto, sans-serif;
+    /* line-height: 28px; */
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+
+}
+
+.navigation {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background-color: var(--blue);
+    border-left: 10px solid var(--blue);
+    transition: .3s;
+    overflow: hidden;
+}
+
+.navigation.active {
+    width: 80px;
+}
+
+.navigation ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navigation ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+    background-color: var(--white);
+}
+
+.navigation ul li:nth-child(1) {
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+
+.navigation ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+    color: var(--blue);
+}
+
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 70px;
+    text-align: center;
+}
+
+.navigation ul li a .icon ion-icon {
+    font-size: 1.75em;
+}
+
+.navigation ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+/* Curve outside */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+.topmain {
+    width: calc(100% - 300px);
+    height: 56px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    transition: .3s;
+    box-shadow: 3px 8px 8px 0px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 3px 8px 8px 0px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 3px 8px 8px 0px rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+.topmain.active {
+    width: calc(100% - 80px);
+}
+
+
+/* Main */
+.main {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    top: 56px;
+    min-height: calc(100% - 56px);
+    background-color: var(--white);
+    transition: .3s;
+}
+
+.main.active {
+
+    width: calc(100% - 80px);
+    left: 80px;
+}
+
+.topbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    cursor: pointer;
+}
+
+.search {
+    position: relative;
+    width: 400px;
+    margin: 0 10px;
+}
+
+.search label {
+    position: relative;
+    width: 100%;
+}
+
+.search label input {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid var(--black2);
+}
+
+.search label ion-icon {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 1.2em;
+}
+
+.user {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+
+}
+
+.user img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Cards */
+.card__box {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+}
+
+.card__box .card {
+    position: relative;
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+}
+
+
+.card__box .card:hover {
+    background-color: var(--blue);
+}
+
+.card__box .card .card__number {
+    position: relative;
+    font-weight: 500;
+    color: var(--blue);
+    font-size: 2.5em;
+}
+
+.card__box .card .card__name {
+    color: var(--black2);
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+
+
+.card__box .card .card__icon {
+    font-size: 3.5em;
+    color: var(--black2);
+}
+
+.card__box .card:hover .card__number,
+.card__box .card:hover .card__name,
+.card__box .card:hover .card__icon {
+    color: var(--white);
+}
+
+/* Detalle */
+.detail {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    grid-gap: 30px;
+}
+
+.detail .rent__expiration {
+    position: relative;
+    width: 100%;
+    display: grid;
+    min-height: 500px;
+    background-color: var(--white);
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+    grid-template-columns: 1fr;
+    grid-template-rows: 40px 1fr;
+}
+
+.detail .rent__expiration .card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+}
+
+
+.detail .rent__expiration .card__header h2 {
+    font-weight: 600;
+    color: var(--blue);
+
+}
+
+.btn {
+    position: relative;
+    padding: 5px 10px;
+    background-color: var(--blue);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+}
+
+.detail table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+
+.detail table thead td {
+    font-weight: 600;
+}
+
+.detail .rent__expiration table tr {
+    color: var(--black1);
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.detail .rent__expiration table tr:last-child {
+    border-bottom: none;
+}
+
+.detail .rent__expiration table tbody tr:hover {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.detail .rent__expiration table tr td {
+    padding: 10px;
+}
+
+
+.detail .rent__expiration table tr td:last-child {
+    text-align: end;
+}
+
+.detail .rent__expiration table tr td:nth-child(3) {
+    text-align: end;
+}
+
+.detail .rent__expiration table tr td:nth-child(4) {
+    text-align: center;
+}
+
+.detail .rent__expiration table .status {
+    padding: 2px 4px;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.detail .rent__expiration table .status.emitido {
+    background-color: #8de02c;
+}
+
+.detail .rent__expiration table .status.vencido {
+    background-color: #f00;
+}
+
+.detail .rent__expiration table .status.limite {
+    background-color: #f9ca3f;
+}
+
+.detail .rent__expiration table .status.pendiente {
+    background-color: #1795ce;
+}
+
+.recent__inquilino {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 40px 1fr;
+    min-height: 500px;
+    padding: 20px;
+    background-color: var(--white);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+    border-radius: 20px;
+}
+
+.recent__inquilino .inquilino__img {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+
+.recent__inquilino .inquilino__img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.recent__inquilino table tr:hover {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.recent__inquilino table .row__inquilino {
+    height: 40px;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+}

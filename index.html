@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Transacciones - v.Dev</title>
+
+    <link rel="stylesheet" href="./css/fonts/fonts.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/menu.css">
+    <link rel="stylesheet" href="./css/banco.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#/Dashboard">
+                        <span class="icon">
+                            <ion-icon name="logo-apple"></ion-icon>
+                        </span>
+                        <span class="title">Residencial VAIO</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/Dashboard">
+                        <span class="icon">
+                            <ion-icon title="Dashborad" name="home"></ion-icon>
+                        </span>
+                        <span class="title">Dashborad</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/Bancos">
+                        <span class="icon">
+                            <ion-icon title="Bancos" name="people"></ion-icon>
+                        </span>
+                        <span class="title">Bancos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/Cuentas">
+                        <span class="icon">
+                            <ion-icon title="Cuentas" name="cash"></ion-icon>
+                        </span>
+                        <span class="title">Cuentas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/Movimientos">
+                        <span class="icon">
+                            <ion-icon title="Movimientos" name="clipboard"></ion-icon>
+                        </span>
+                        <span class="title">Movimientos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/Transacciones">
+                        <span class="icon">
+                            <ion-icon title="Transacciones" name="document"></ion-icon>
+                        </span>
+                        <span class="title">Transacciones</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/Configuracion">
+                        <span class="icon">
+                            <ion-icon title="Configuración" name="settings"></ion-icon>
+                        </span>
+                        <span class="title">Configuración</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/Data">
+                        <span class="icon">
+                            <ion-icon title="Modificar contraseña" name="lock"></ion-icon>
+                        </span>
+                        <span class="title">Password</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon title="Salir" name="exit"></ion-icon>
+                        </span>
+                        <span class="title">Salir</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="topmain">
+            <!-- toggle main -->
+            <div class="toggle">
+                <ion-icon name="menu"></ion-icon>
+            </div>
+
+            <!-- user -->
+            <div class="user">
+                <img src="./images/general/user.png" alt="">
+            </div>
+        </div>
+
+        <!-- Main -->
+        <div class="main" id="app">
+
+
+
+
+        </div>
+    </div>
+
+    <script src="./js/api.js"></script>
+    <!-- pages -->
+    <script src="./js/views/banco.js"></script>
+
+    <!-- router -->
+    <script src="./js/router/router.js"></script>
+    <script src="./js/index.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
+    <script>
+
+
+
+        function getPersona() {
+            fetch(GET_PERSONA).then(res => res.json()).then(data => {
+                console.log(data)
+
+            })
+        }
+
+        // getPersona();
+    </script>
+</body>
+
+</html>

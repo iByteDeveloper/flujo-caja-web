@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Acceso</title>
+
+    <link rel="stylesheet" href="./css/fonts/fonts.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/buttons.css">
+</head>
+
+<body>
+    <div class="login__content">
+        <div class="login__modal">
+            <div class="login__controls">
+                <img alt="Imagen login" src="./images/login/transactional-data.png" />
+                <h4>Control de Transacciones</h4>
+                <p>Ingresa tus datos y accede al módulo de administración de la plataforma</p>
+                <div>
+                    <label>Usuario:</label>
+                    <input id="txtUser" type="text" name="usuario" placeholder="juan.perez@">
+                </div>
+                <div>
+                    <input id="txtPass" type="password" name="password" placeholder="Contraseña">
+                </div>
+                <button id="btnLogin" class="button__primary">
+                    Ingresar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/lgn.js"></script>
+    <script>
+
+        window.onload = function () {
+            bindControlsLogin();
+        }
+    </script>
+</body>
+
+</html>
