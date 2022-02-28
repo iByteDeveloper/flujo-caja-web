@@ -8,9 +8,12 @@
     <title>Control de Transacciones - v.Dev</title>
 
     <link rel="stylesheet" href="./css/fonts/fonts.css">
+    <link rel="stylesheet" href="./css/buttons.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/menu.css">
     <link rel="stylesheet" href="./css/banco.css">
+    <link rel="stylesheet" href="./css/persona.css">
+    <link rel="stylesheet" href="./css/cuenta.css">
 
 </head>
 
@@ -37,9 +40,17 @@
                 <li>
                     <a href="#/Bancos">
                         <span class="icon">
-                            <ion-icon title="Bancos" name="people"></ion-icon>
+                            <ion-icon title="Bancos" name="briefcase"></ion-icon>
                         </span>
                         <span class="title">Bancos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/Personas">
+                        <span class="icon">
+                            <ion-icon title="Personas" name="people"></ion-icon>
+                        </span>
+                        <span class="title">Personas</span>
                     </a>
                 </li>
                 <li>
@@ -64,14 +75,6 @@
                             <ion-icon title="Transacciones" name="document"></ion-icon>
                         </span>
                         <span class="title">Transacciones</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#/Configuracion">
-                        <span class="icon">
-                            <ion-icon title="Configuración" name="settings"></ion-icon>
-                        </span>
-                        <span class="title">Configuración</span>
                     </a>
                 </li>
                 <li>
@@ -109,33 +112,44 @@
         <div class="main" id="app">
 
 
+        </div>
 
+        <div class="modal display__none">
+            <div class="modal__content">
+                <div id="modalHead" class="modal__title">
+                    <div><label id="lblModalTitle" for="">Titulo del modal</label></div>
+                    <svg id="btnModalClose" width="20" height="19" viewBox="0 0 20 19" fill="none">
+                        <line y1="-0.5" x2="24.4376" y2="-0.5"
+                            transform="matrix(0.707106 0.707108 -0.707106 0.707108 1.04004 1.67993)" stroke="#333333" />
+                        <line y1="-0.5" x2="24.4376" y2="-0.5"
+                            transform="matrix(0.707107 -0.707107 0.707109 0.707104 1.11111 18.9601)" stroke="#333333" />
+                    </svg>
+                </div>
+                <div id="modalBody" class="modal__body">
+                    
+                </div>
+            </div>
+        </div>
 
+        <div class="modal__loader display__none">
+            <div class="content__loader">
+                <img alt="Territorios Digitales Confiables está cargando" src="./images/general/loader.gif">
+            </div>
         </div>
     </div>
 
     <script src="./js/api.js"></script>
     <!-- pages -->
     <script src="./js/views/banco.js"></script>
+    <script src="./js/views/persona.js"></script>
+    <script src="./js/views/cuenta.js"></script>
 
     <!-- router -->
     <script src="./js/router/router.js"></script>
     <script src="./js/index.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
-    <script>
-
-
-
-        function getPersona() {
-            fetch(GET_PERSONA).then(res => res.json()).then(data => {
-                console.log(data)
-
-            })
-        }
-
-        // getPersona();
-    </script>
+    
 </body>
 
 </html>

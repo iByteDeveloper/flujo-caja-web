@@ -1,25 +1,25 @@
-.body__banco{
+.body__persona {
     width: 100%;
     padding: 1rem;
 }
 
-.body__banco > h1{
+.body__persona>h1 {
     margin-bottom: 1rem;
 }
 
-.table__container{
+.table__container {
     margin-top: 2rem;
     max-width: 80%;
     min-width: 600px;
 }
 
-.table__banco {
+.table__persona {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
 }
 
-.table__banco--head, .table__banco--body .body__row {
+.table__persona--head, .table__persona--body .body__row {
     position: relative;
     border-collapse: collapse;
     width: 100%;
@@ -28,22 +28,22 @@
     min-height: 50px;
     height: auto;
     display: grid;
-    grid-template-columns: 60px 1fr 1fr 100px;
+    grid-template-columns: 60px 100px 120px 1fr .5fr .35fr .35fr 100px;
     grid-template-rows: minmax(64px, 1fr);
     column-gap: 5px;
     padding: 0;
 }
 
-.body__row:hover{
+.body__row:hover {
     background-color: var(--theme-color-gray1);
 }
 
-.table__banco--head{
+.table__persona--head {
     font-weight: 600;
     pointer-events: none;
 }
 
-.table__banco--head>div, .body__row>div {
+.table__persona--head>div, .body__row>div {
     padding: 0;
     margin: 0;
     display: flex;
@@ -54,19 +54,19 @@
     align-items: flex-start;
 }
 
-.table__banco .table__options--horizontal {
+.table__persona .table__options--horizontal {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-.table__banco .table__options--horizontal img {
+.table__persona .table__options--horizontal img {
     cursor: pointer;
     user-select: none;
 }
 
-.table__banco .table__options--vertical {
+.table__persona .table__options--vertical {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,51 +74,50 @@
     box-sizing: border-box;
 }
 
-.table__banco .table__options--vertical .ubigeo__name {
+.table__persona .table__options--vertical .ubigeo__name {
     color: var(--theme-interaction-color);
     height: 20px;
 }
 
-.table__banco .table__options--vertical .ubigeo__name-nacional {
+.table__persona .table__options--vertical .ubigeo__name-nacional {
     color: var(--theme-color-text);
     height: 20px;
     text-decoration: none;
     cursor: default;
 }
 
-.table__banco .table__options--vertical .ubigeo__breadcrumb {
+.table__persona .table__options--vertical .ubigeo__breadcrumb {
     color: var(--theme-color-support);
     font-size: var(--font-small);
     height: 20px;
 }
 
-.table__banco tbody>tr, .table__banco tbody>tr>td, .table__banco .row__log {
-    /* border: 1px solid var(--theme-color-border); */
+.table__persona tbody>tr, .table__persona tbody>tr>td, .table__persona .row__log {
     height: 40px;
     max-height: 40px;
     box-sizing: border-box;
 }
 
-.table__banco--body {
+.table__persona--body {
     display: flex;
     flex-direction: column;
     padding: 0;
     margin: 0;
 }
 
-.table__banco--body .body__row {
+.table__persona--body .body__row {
     box-sizing: border-box;
     max-height: 50px;
     height: 50px;
 }
 
-.table__banco--body>.body__row>* {
+.table__persona--body>.body__row>* {
     box-sizing: border-box;
     max-height: 50px;
     height: 50px;
 }
 
-.table__banco--body > .body__row > .table__wrapAnywhere{
+.table__persona--body>.body__row>.table__wrapAnywhere {
     line-height: 1rem;
     overflow-wrap: anywhere;
 }
@@ -128,7 +127,7 @@
     background-color: var(--theme-color-nivel);
 }
 
-.content__banco{
+.content__persona {
     box-sizing: border-box;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
