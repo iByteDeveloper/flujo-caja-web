@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="./css/banco.css">
     <link rel="stylesheet" href="./css/persona.css">
     <link rel="stylesheet" href="./css/cuenta.css">
+    <link rel="stylesheet" href="./css/cliente.css">
+    <link rel="stylesheet" href="./css/lista.css">
 
 </head>
 
@@ -62,19 +64,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#/Movimientos">
+                    <a href="#/Clientes">
                         <span class="icon">
-                            <ion-icon title="Movimientos" name="clipboard"></ion-icon>
+                            <ion-icon title="Clientes" name="document"></ion-icon>
                         </span>
-                        <span class="title">Movimientos</span>
+                        <span class="title">Clientes</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#/Transacciones">
+                    <a href="#/Lista">
                         <span class="icon">
-                            <ion-icon title="Transacciones" name="document"></ion-icon>
+                            <ion-icon title="Lista" name="clipboard"></ion-icon>
                         </span>
-                        <span class="title">Transacciones</span>
+                        <span class="title">Lista</span>
                     </a>
                 </li>
                 <li>
@@ -126,7 +128,7 @@
                     </svg>
                 </div>
                 <div id="modalBody" class="modal__body">
-                    
+
                 </div>
             </div>
         </div>
@@ -143,13 +145,16 @@
     <script src="./js/views/banco.js"></script>
     <script src="./js/views/persona.js"></script>
     <script src="./js/views/cuenta.js"></script>
+    <script src="./js/views/cliente.js"></script>
+    <script src="./js/views/lista.js"></script>
 
     <!-- router -->
     <script src="./js/router/router.js"></script>
     <script src="./js/index.js"></script>
+    <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
-    
+
 </body>
 
 </html>

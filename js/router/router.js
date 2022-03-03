@@ -39,6 +39,24 @@ function router(_route) {
                 switchLoader(false);
             }, 200);
             break;
+
+        case '#/Clientes':
+            switchLoader(true);
+            htmlPage = $PAGE_CLIENTE;
+            setTimeout(() => {
+                getCliente();
+                switchLoader(false);
+            }, 200);
+            break;
+
+        case '#/Lista':
+            switchLoader(true);
+            htmlPage = $PAGE_LISTA;
+            setTimeout(() => {
+                getLista();
+                switchLoader(false);
+            }, 200);
+            break;
     }
 
 

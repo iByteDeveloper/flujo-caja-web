@@ -1,33 +1,32 @@
-const $PAGE_PERSONA = `
-    <div class="body__persona">
-        <h1>Gestión de Personas</h1>
+const $PAGE_CLIENTE = `
+    <div class="body__cliente">
+        <h1>Gestión de Clientes</h1>
 
-        <p>Módulo para administrar las personas que se registren en el sistema.</p>
+        <p>Módulo para administrar los clientes que se registren en el sistema.</p>
         
         <div class="table__container">
-            <button id="btnAddPersona" class="button__primary">Agregar</button>
-            <div class="table__persona">
-                <div class="table__persona--head">
+            <button id="btnAddCliente" class="button__primary">Agregar</button>
+            <div class="table__cliente">
+                <div class="table__cliente--head">
                     <div>N°</div>
                     <div>Tipo doc.</div>
                     <div>Nro doc.</div>
                     <div>Apellidos y Nombres</div>
                     <div>Correo electrónico</div>
-                    <div>Nro teléfono</div>
-                    <div>Nro celular</div>
+                    <div>Observación</div>
+                    <div>Cabecera</div>
                     <div>Herramientas</div>
                 </div>
-                <div class="table__persona--body">
-
+                <div class="table__cliente--body">
                 </div>
             </div>
         </div>
     </div>
 `
 
-const $TEMPLATE_MODAL_PERSONA = `
-    <div class="content__persona">
-        <label id="lblIdPersona" class="display__none"></label>
+const $TEMPLATE_MODAL_CLIENTE = `
+    <div class="content__cliente">
+        <label id="lblIdCliente" class="display__none"></label>
         <div class="input__text">
             <label>Tipo documento</label>
             <select id="cboTipoDocumento">
@@ -50,42 +49,42 @@ const $TEMPLATE_MODAL_PERSONA = `
             <input id="txtNombres" type="text">
         </div>
         <div class="input__text">
+            <label>Fila de cabecera</label>
+            <input id="txtCabecera" type="number">
+        </div>
+        <div class="input__text">
             <label>Correo</label>
             <input id="txtCorreo" type="text">
         </div>
         <div class="input__text">
-            <label>Nro de teléfono</label>
-            <input id="txtTelefono" type="text">
-        </div>
-        <div class="input__text">
-            <label>Nro de celular</label>
-            <input id="txtCelular" type="text">
+            <label>Observación</label>
+            <input id="txtObservacion" type="text">
         </div>
 
         <div class="content__buttons">
-            <button id="btnSavePersona" class="button__primary">Guardar</button>
-            <button id="btnCancelPersona" class="button__secondary">Cancelar</button>
+            <button id="btnSaveCliente" class="button__primary">Guardar</button>
+            <button id="btnCancelCliente" class="button__secondary">Cancelar</button>
         </div>
     </div>
 `
-var $btnAddPersona;
-var $btnSavePersona;
-var flagAddPersona = false;
+var $btnAddCliente;
+var $btnSaveCliente;
+var flagAddCliente = false;
 
 // Función para obtener el registro
-async function getPersona(_ndoc = '__all__') {
+async function getCliente(_ndoc = '__all__') {
+    
+    $btnAddCliente = document.querySelector('#btnAddCliente');
+    $btnAddCliente.addEventListener('click', addClienteModal);
 
-    $btnAddPersona = document.querySelector('#btnAddPersona');
-    $btnAddPersona.addEventListener('click', addPersonaModal);
-
-    const data = await fetch(`${GET_PERSONA}/${_ndoc}`).then(resp => resp.json());
+    const data = await fetch(`${GET_CLIENTE}/${_ndoc}`).then(resp => resp.json());
 
     if (data === null) {
         alert('No hay datos para mostrar.')
         return;
     }
 
-    fillTablePersona(data);
+    fillTableCliente(data);
 }
 
 async function getTipoDocumentoSelect() {
@@ -101,26 +100,26 @@ async function getTipoDocumentoSelect() {
 }
 
 // Función para llenar la tabla
-function fillTablePersona(_data) {
+function fillTableCliente(_data) {
     let rowCurrent = 1;
-    const $body = document.querySelector('.table__persona--body');
+    const $body = document.querySelector('.table__cliente--body');
     $body.innerHTML = '';
 
     _data.map((row) => {
 
         let imgTgl = (row.idestado === 1) ? 'activate' : 'desactivate';
         const $row = `
-            <div data-identificador="${row.idpersona}" class="body__row" >
+            <div data-identificador="${row.idcliente}" class="body__row" >
                 <div>${rowCurrent}</div>
                 <div>${row.tipodocumento}</div>
                 <div>${row.ndocumento}</div>
                 <div>${row.completo}</div>
                 <div>${row.correo}</div>
-                <div>${row.telefono}</div>
-                <div>${row.celular}</div>
+                <div>${row.observacion}</div>
+                <div>${row.cabecera}</div>
                 <div class="table__options--horizontal">
-                    <img class="edit__persona" onclick="openModalPersona('${row.ndocumento}');" alt="Editar" src="./images/general/edit.svg" title="Editar" />
-                    <img onclick="deletePersona(${row.idpersona});" title="${(row.idestado === 1) ? 'Desactivar' : 'Activar'}" class="toggle__cuenta" alt="Activar/desactivar" src="./images/general/${imgTgl}.svg" />
+                    <img class="edit__cliente" onclick="openModalCliente('${row.ndocumento}');" alt="Editar" src="./images/general/edit.svg" title="Editar" />
+                    <img onclick="deleteCliente(${row.idcliente});" title="${(row.idestado === 1) ? 'Desactivar' : 'Activar'}" class="toggle__cuenta" alt="Activar/desactivar" src="./images/general/${imgTgl}.svg" />
                 </div>
             </div>
         `
@@ -130,15 +129,15 @@ function fillTablePersona(_data) {
 }
 
 // Función para abrir el modal y settear los campos
-async function openModalPersona(_ndoc) {
+async function openModalCliente(_ndoc) {
     $modal__loader.classList.remove('display__none');
 
     flagAdd = false;
     clearModalContentClass();
     $modal__content.classList.add('modal__content-500');
-    $lblModalTitle.textContent = 'Modificar Datos de la Persona'
+    $lblModalTitle.textContent = 'Modificar Datos del Cliente'
 
-    let data = await fetch(`${GET_PERSONA}/${_ndoc}`).then(resp => resp.json());
+    let data = await fetch(`${GET_CLIENTE}/${_ndoc}`).then(resp => resp.json());
 
     if (data.length === 0) {
         alert('No se ha podido recuperar los datos. \nInténtelo nuevamente.');
@@ -147,92 +146,92 @@ async function openModalPersona(_ndoc) {
 
     let oData = data[0];
 
-    $modalBody.innerHTML = $TEMPLATE_MODAL_PERSONA;
-    $btnSavePersona = document.querySelector('#btnSavePersona');
-    $btnSavePersona.addEventListener('click', saveDataPersona);
+    $modalBody.innerHTML = $TEMPLATE_MODAL_CLIENTE;
+    $btnSaveCliente = document.querySelector('#btnSaveCliente');
+    $btnSaveCliente.addEventListener('click', saveDataCliente);
 
     await getTipoDocumentoSelect();
 
-    let $lblIdPersona = document.getElementById('lblIdPersona');
+    let $lblIdCliente = document.getElementById('lblIdCliente');
     let $cboTipoDocumento = document.getElementById('cboTipoDocumento');
     let $txtNdocumento = document.getElementById('txtNdocumento');
     let $txtPaterno = document.getElementById('txtPaterno');
     let $txtMaterno = document.getElementById('txtMaterno');
     let $txtNombres = document.getElementById('txtNombres');
     let $txtCorreo = document.getElementById('txtCorreo');
-    let $txtTelefono = document.getElementById('txtTelefono');
-    let $txtCelular = document.getElementById('txtCelular');
+    let $txtCabecera = document.getElementById('txtCabecera');
+    let $txtObservacion = document.getElementById('txtObservacion');
 
-    $lblIdPersona.value = oData.idpersona;
+    $lblIdCliente.value = oData.idcliente;
     $cboTipoDocumento.value = oData.idtipodocumento;
     $txtNdocumento.value = oData.ndocumento;
     $txtPaterno.value = oData.paterno;
     $txtMaterno.value = oData.materno;
     $txtNombres.value = oData.nombres;
     $txtCorreo.value = oData.correo;
-    $txtTelefono.value = oData.telefono;
-    $txtCelular.value = oData.celular;
+    $txtCabecera.value = oData.cabecera;
+    $txtObservacion.value = oData.observacion;
 
     $modal.classList.remove('display__none');
     $modal__loader.classList.add('display__none');
 }
 
-// Función para agregar una persona
-async function addPersonaModal() {
+// Función para agregar una cliente
+async function addClienteModal() {
 
     $modal__loader.classList.remove('display__none');
 
     flagAdd = true;
     clearModalContentClass();
     $modal__content.classList.add('modal__content-500');
-    $lblModalTitle.textContent = 'Gestión de Personas'
+    $lblModalTitle.textContent = 'Gestión de Cliente'
 
-    $modalBody.innerHTML = $TEMPLATE_MODAL_PERSONA;
+    $modalBody.innerHTML = $TEMPLATE_MODAL_CLIENTE;
 
     await getTipoDocumentoSelect();
 
-    $btnSavePersona = document.querySelector('#btnSavePersona');
-    $btnSavePersona.addEventListener('click', saveDataPersona);
+    $btnSaveCliente = document.querySelector('#btnSaveCliente');
+    $btnSaveCliente.addEventListener('click', saveDataCliente);
 
     $modal.classList.remove('display__none');
     $modal__loader.classList.add('display__none');
 }
 
 //Función para guardar los cambios
-async function saveDataPersona() {
+async function saveDataCliente() {
 
-    let $lblIdPersona = document.getElementById('lblIdPersona');
+    let $lblIdCliente = document.getElementById('lblIdCliente');
     let $cboTipoDocumento = document.getElementById('cboTipoDocumento');
     let $txtNdocumento = document.getElementById('txtNdocumento');
     let $txtPaterno = document.getElementById('txtPaterno');
     let $txtMaterno = document.getElementById('txtMaterno');
     let $txtNombres = document.getElementById('txtNombres');
     let $txtCorreo = document.getElementById('txtCorreo');
-    let $txtTelefono = document.getElementById('txtTelefono');
-    let $txtCelular = document.getElementById('txtCelular');
+    let $txtCabecera = document.getElementById('txtCabecera');
+    let $txtObservacion = document.getElementById('txtObservacion');
 
-    let codePersona = $lblIdPersona.value,
-        URL_REQUEST = EDT_PERSONA,
+    let codeCliente = $lblIdCliente.value,
+        URL_REQUEST = EDT_CLIENTE,
         URL_METHOD = 'PATCH';
 
     if (flagAdd) {
-        codePersona = 0;
-        URL_REQUEST = ADD_PERSONA;
+        codeCliente = 0;
+        URL_REQUEST = ADD_CLIENTE;
         URL_METHOD = 'PUT';
     }
-    debugger
+    
     let fData = new FormData();
     fData.append('_idusuario', $VAL);
-    fData.append('_idpersona', codePersona)
+    fData.append('_idcliente', codeCliente)
     fData.append('_idtipodoc', $cboTipoDocumento.value)
     fData.append('_ndocumento', $txtNdocumento.value)
     fData.append('_paterno', $txtPaterno.value)
     fData.append('_materno', $txtMaterno.value)
     fData.append('_nombres', $txtNombres.value)
     fData.append('_correo', $txtCorreo.value)
-    fData.append('_telefono', $txtTelefono.value)
-    fData.append('_celular', $txtCelular.value)
-
+    fData.append('_observacion', $txtObservacion.value)
+    fData.append('_cabecera', $txtCabecera.value)
+    debugger
     let data = await fetch(URL_REQUEST, { method: URL_METHOD, body: fData }).then(resp => resp.json());
     let oData;
 
@@ -246,16 +245,16 @@ async function saveDataPersona() {
 
     if (oData.status_response === 1) {
         $modal.classList.add('display__none');
-        getPersona('__all__');
+        getCliente('__all__');
     }
 }
 
-async function deletePersona(_id) {
+async function deleteCliente(_id) {
 
     let fData = new FormData();
     fData.append('_idusuario', $VAL);
-    fData.append('_idpersona', _id);
-    let data = await fetch(DEL_PERSONA, { method: 'DELETE', body: fData }).then(resp => resp.json());
+    fData.append('_idcliente', _id);
+    let data = await fetch(DEL_CLIENTE, { method: 'DELETE', body: fData }).then(resp => resp.json());
 
     if (data.length === 0) {
         alert('No se ha podido desactivar el registro.');
@@ -266,7 +265,7 @@ async function deletePersona(_id) {
 
     if (oData.status_response === 1) {
         alert(oData.description_response);
-        getPersona('__all__');
+        getCliente('__all__');
     }
     else {
         alert('No se puedo guardar los cambios.')

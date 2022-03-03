@@ -1,0 +1,139 @@
+.body__cliente {
+    width: 100%;
+    padding: 1rem;
+}
+
+.body__cliente>h1 {
+    margin-bottom: 1rem;
+}
+
+.table__container {
+    margin-top: 2rem;
+    max-width: 80%;
+    min-width: 600px;
+}
+
+.table__cliente {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.table__cliente--head, .table__cliente--body .body__row {
+    position: relative;
+    border-collapse: collapse;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid var(--theme-color-border);
+    min-height: 50px;
+    height: auto;
+    display: grid;
+    grid-template-columns: 60px 100px 120px 1fr .5fr .35fr .35fr 100px;
+    grid-template-rows: minmax(64px, 1fr);
+    column-gap: 5px;
+    padding: 0;
+}
+
+.body__row:hover {
+    background-color: var(--theme-color-gray1);
+}
+
+.table__cliente--head {
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.table__cliente--head>div, .body__row>div {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.table__cliente .table__options--horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.table__cliente .table__options--horizontal img {
+    cursor: pointer;
+    user-select: none;
+}
+
+.table__cliente .table__options--vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.table__cliente .table__options--vertical .ubigeo__name {
+    color: var(--theme-interaction-color);
+    height: 20px;
+}
+
+.table__cliente .table__options--vertical .ubigeo__name-nacional {
+    color: var(--theme-color-text);
+    height: 20px;
+    text-decoration: none;
+    cursor: default;
+}
+
+.table__cliente .table__options--vertical .ubigeo__breadcrumb {
+    color: var(--theme-color-support);
+    font-size: var(--font-small);
+    height: 20px;
+}
+
+.table__cliente tbody>tr, .table__cliente tbody>tr>td, .table__cliente .row__log {
+    height: 40px;
+    max-height: 40px;
+    box-sizing: border-box;
+}
+
+.table__cliente--body {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+.table__cliente--body .body__row {
+    box-sizing: border-box;
+    max-height: 50px;
+    height: 50px;
+}
+
+.table__cliente--body>.body__row>* {
+    box-sizing: border-box;
+    max-height: 50px;
+    height: 50px;
+}
+
+.table__cliente--body>.body__row>.table__wrapAnywhere {
+    line-height: 1rem;
+    overflow-wrap: anywhere;
+}
+
+.body__row.row__secondary {
+    /* display: none; */
+    background-color: var(--theme-color-nivel);
+}
+
+.content__cliente {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 50px;
+    row-gap: 24px;
+    grid-template-rows: 60px 60px 60px 60px 60px;
+    height: 100%;
+    margin-top: 10px;
+}

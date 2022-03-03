@@ -11,6 +11,11 @@ const ADD_PERSONA = `${API}/add-persona/`
 const EDT_PERSONA = `${API}/edt-persona/`
 const DEL_PERSONA = `${API}/del-persona/`
 
+const GET_CLIENTE = `${API}/get-cliente/`
+const ADD_CLIENTE = `${API}/add-cliente/`
+const EDT_CLIENTE = `${API}/edt-cliente/`
+const DEL_CLIENTE = `${API}/del-cliente/`
+
 const GET_CUENTA = `${API}/get-cuenta/`
 const ADD_CUENTA = `${API}/add-cuenta/`
 const EDT_CUENTA = `${API}/edt-cuenta/`
