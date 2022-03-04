@@ -87,6 +87,7 @@ async function openModalBanco(_id) {
     flagAdd = false;
     clearModalContentClass();
     $modal__content.classList.add('modal__content-200');
+    $modal__content.classList.add('modal__contentWidth-40perc');
     $lblModalTitle.textContent = 'Modificar Datos del Banco'
 
     let data = await fetch(`${GET_BANCO}/${_id}`).then(resp => resp.json());
@@ -119,6 +120,7 @@ function addBancoModal() {
     flagAdd = true;
     clearModalContentClass();
     $modal__content.classList.add('modal__content-200');
+    $modal__content.classList.add('modal__contentWidth-40perc');
     $lblModalTitle.textContent = 'Gestión de Banco'
 
     $modalBody.innerHTML = $TEMPLATE_MODAL_BANCO;

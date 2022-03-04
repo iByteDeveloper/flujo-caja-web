@@ -13,13 +13,13 @@
     min-width: 600px;
 }
 
-.table__lista {
+.table__lista, .table__excel {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
 }
 
-.table__lista--head, .table__lista--body .body__row {
+.table__lista--head, .table__lista--body .body__row{
     position: relative;
     border-collapse: collapse;
     width: 100%;
@@ -34,16 +34,30 @@
     padding: 0;
 }
 
+.table__excel--head, .table__excel--body .body__row{
+    position: relative;
+    border-collapse: collapse;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid var(--theme-color-border);
+    min-height: 50px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+    padding: 0;
+}
+
 .body__row:hover{
     background-color: var(--theme-color-gray1);
 }
 
-.table__lista--head{
+.table__lista--head, .table__excel--head{
     font-weight: 600;
     pointer-events: none;
 }
 
-.table__lista--head>div, .body__row>div {
+.table__lista--head>div, .body__row>div, .table__excel--head>div, .body__row>div {
     padding: 0;
     margin: 0;
     display: flex;
@@ -54,19 +68,19 @@
     align-items: flex-start;
 }
 
-.table__lista .table__options--horizontal {
+.table__lista .table__options--horizontal, .table__excel .table__options--horizontal {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-.table__lista .table__options--horizontal img {
+.table__lista .table__options--horizontal img, .table__excel .table__options--horizontal img {
     cursor: pointer;
     user-select: none;
 }
 
-.table__lista .table__options--vertical {
+.table__lista .table__options--vertical, .table__excel .table__options--vertical {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,51 +88,51 @@
     box-sizing: border-box;
 }
 
-.table__lista .table__options--vertical .ubigeo__name {
+.table__lista .table__options--vertical .ubigeo__name, .table__excel .table__options--vertical .ubigeo__name {
     color: var(--theme-interaction-color);
     height: 20px;
 }
 
-.table__lista .table__options--vertical .ubigeo__name-nacional {
+.table__lista .table__options--vertical .ubigeo__name-nacional, .table__excel .table__options--vertical .ubigeo__name-nacional {
     color: var(--theme-color-text);
     height: 20px;
     text-decoration: none;
     cursor: default;
 }
 
-.table__lista .table__options--vertical .ubigeo__breadcrumb {
+.table__lista .table__options--vertical .ubigeo__breadcrumb, .table__excel .table__options--vertical .ubigeo__breadcrumb {
     color: var(--theme-color-support);
     font-size: var(--font-small);
     height: 20px;
 }
 
-.table__lista tbody>tr, .table__lista tbody>tr>td, .table__lista .row__log {
+.table__lista tbody>tr, .table__lista tbody>tr>td, .table__lista .row__log, .table__excel tbody>tr, .table__excel tbody>tr>td, .table__excel .row__log {
     /* border: 1px solid var(--theme-color-border); */
     height: 40px;
     max-height: 40px;
     box-sizing: border-box;
 }
 
-.table__lista--body {
+.table__lista--body, .table__excel--body {
     display: flex;
     flex-direction: column;
     padding: 0;
     margin: 0;
 }
 
-.table__lista--body .body__row {
+.table__lista--body .body__row, .table__excel--body .body__row {
     box-sizing: border-box;
     max-height: 50px;
     height: 50px;
 }
 
-.table__lista--body>.body__row>* {
+.table__lista--body>.body__row>*, .table__excel--body>.body__row>* {
     box-sizing: border-box;
     max-height: 50px;
     height: 50px;
 }
 
-.table__lista--body > .body__row > .table__wrapAnywhere{
+.table__lista--body > .body__row > .table__wrapAnywhere, .table__excel--body > .body__row > .table__wrapAnywhere{
     line-height: 1rem;
     overflow-wrap: anywhere;
 }
@@ -141,4 +155,17 @@
 
 #file__attachment{
     display: none;
+}
+
+.section__filter{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    max-height: 52px;
+    box-sizing: border-box;
+    column-gap: 1rem;
+}
+
+.section__filter .input__text{
+    row-gap: 4px;
 }

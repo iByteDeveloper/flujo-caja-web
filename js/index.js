@@ -28,6 +28,9 @@ function clearModalContentClass() {
     $modal__content.classList.remove('modal__content-400');
     $modal__content.classList.remove('modal__content-500');
     $modal__content.classList.remove('modal__content-600');
+
+    $modal__content.classList.remove('modal__contentWidth-40perc');
+    $modal__content.classList.remove('modal__contentWidth-60perc');
 }
 
 window.addEventListener('hashchange', () => router(window.location.hash));

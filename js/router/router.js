@@ -53,7 +53,7 @@ function router(_route) {
             switchLoader(true);
             htmlPage = $PAGE_LISTA;
             setTimeout(() => {
-                getLista();
+                getClienteSelect();
                 switchLoader(false);
             }, 200);
             break;

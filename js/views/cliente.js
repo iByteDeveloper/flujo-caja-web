@@ -135,6 +135,7 @@ async function openModalCliente(_ndoc) {
     flagAdd = false;
     clearModalContentClass();
     $modal__content.classList.add('modal__content-500');
+    $modal__content.classList.add('modal__contentWidth-40perc');
     $lblModalTitle.textContent = 'Modificar Datos del Cliente'
 
     let data = await fetch(`${GET_CLIENTE}/${_ndoc}`).then(resp => resp.json());
@@ -184,6 +185,7 @@ async function addClienteModal() {
     flagAdd = true;
     clearModalContentClass();
     $modal__content.classList.add('modal__content-500');
+    $modal__content.classList.add('modal__contentWidth-40perc');
     $lblModalTitle.textContent = 'Gestión de Cliente'
 
     $modalBody.innerHTML = $TEMPLATE_MODAL_CLIENTE;

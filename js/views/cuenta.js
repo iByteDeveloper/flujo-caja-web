@@ -155,6 +155,7 @@ async function openModalCuenta(_cci) {
     flagAdd = false;
     clearModalContentClass();
     $modal__content.classList.add('modal__content-400');
+    $modal__content.classList.add('modal__contentWidth-40perc');
     $lblModalTitle.textContent = 'Modificar Datos de la Cuenta'
 
     let data = await fetch(`${GET_CUENTA}/${_cci}`).then(resp => resp.json());
@@ -202,6 +203,7 @@ async function addCuentaModal() {
     flagAdd = true;
     clearModalContentClass();
     $modal__content.classList.add('modal__content-400');
+    $modal__content.classList.add('modal__contentWidth-40perc');
     $lblModalTitle.textContent = 'Gestión de Cuenta'
 
     $modalBody.innerHTML = $TEMPLATE_MODAL_CUENTA;

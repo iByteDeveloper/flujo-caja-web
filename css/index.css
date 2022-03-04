@@ -503,6 +503,12 @@ body {
 .modal__content.modal__content-600 {
     max-height: 600px;
 }
+.modal__content.modal__contentWidth-40perc {
+    width: 40vw;
+}
+.modal__content.modal__contentWidth-60perc {
+    width: 60vw;
+}
 
 .modal__title {
     display: grid;

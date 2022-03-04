@@ -136,6 +136,7 @@ async function openModalPersona(_ndoc) {
     flagAdd = false;
     clearModalContentClass();
     $modal__content.classList.add('modal__content-500');
+    $modal__content.classList.add('modal__contentWidth-40perc');
     $lblModalTitle.textContent = 'Modificar Datos de la Persona'
 
     let data = await fetch(`${GET_PERSONA}/${_ndoc}`).then(resp => resp.json());
@@ -185,6 +186,7 @@ async function addPersonaModal() {
     flagAdd = true;
     clearModalContentClass();
     $modal__content.classList.add('modal__content-500');
+    $modal__content.classList.add('modal__contentWidth-40perc');
     $lblModalTitle.textContent = 'Gestión de Personas'
 
     $modalBody.innerHTML = $TEMPLATE_MODAL_PERSONA;
